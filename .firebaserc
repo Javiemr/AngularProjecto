@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nature-428a6": {
+      "hosting": {
+        "Proyecto1": [
+          "nature-428a6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nature-428a6"
+  }
+}

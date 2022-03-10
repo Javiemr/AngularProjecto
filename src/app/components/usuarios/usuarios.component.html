@@ -1,0 +1,45 @@
+
+<div class="tablausu">
+    <p-messages [value]="msj"></p-messages>
+
+<p-table [value]="usuarios" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" sortField="idnum" [sortOrder]="1"
+responsiveLayout="scroll"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>correo</th>
+            <th>numtelf</th>
+            <th>direccion</th>
+            <th>estaengrupo</th>
+            <th>coordinador</th>
+            <th></th>
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario>
+        <tr>
+            <td>{{usuario.idnum}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellido}}</td>
+            <td>{{usuario.correo}}</td>
+            <td>{{usuario.numtelf}}</td>
+            <td>{{usuario.direccion}}</td>
+            <td><i class="pi pi-check" *ngIf="usuario.estaengrupo"></i>
+                <i class="pi pi-times" *ngIf="!usuario.estaengrupo"></i>
+            </td>
+            <td><i class="pi pi-check" *ngIf="usuario.coordinador"></i>
+                <i class="pi pi-times" *ngIf="!usuario.coordinador"></i> </td>
+                <td><button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger" (click)="showDialog(usuario)"> </button></td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-dialog header="{{userSelected.nombre}} {{userSelected.apellido}}" [(visible)]="display">
+    
+    
+    <div class="dialog-container"><b>¿Deseas eliminar a {{userSelected.nombre}}? &nbsp; &nbsp; <button pButton type="button"  class="p-button-text p-button-danger btnconf" (click)="confirm(userSelected)">Si</button></b></div>
+</p-dialog>
+<p-confirmDialog header="Confirmation" icon="pi pi-times-circle"></p-confirmDialog>
+</div>
